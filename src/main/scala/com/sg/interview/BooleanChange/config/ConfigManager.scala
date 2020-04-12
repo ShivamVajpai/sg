@@ -6,17 +6,18 @@ import pureconfig.generic.auto._
 
 object ConfigManager {
 
-  def apply(configPath:String): ConfigManager = {
-    var sg:SG = null
-    if( configPath!=null && !configPath.isEmpty) {
+  def apply(configPath: String): ConfigManager = {
+    var sg: SG = null
+    if (configPath != null && !configPath.isEmpty) {
       sg = ConfigSource.file(configPath).load[SG].right.get
     } else {
       sg = ConfigSource.default.load[SG].right.get
     }
     val cfgMgr = new ConfigManager()
-    cfgMgr.sg= sg
+    cfgMgr.sg = sg
     cfgMgr
   }
+}
   /*
   def main(args: Array[String]): Unit = {
     val cm = apply(null)
